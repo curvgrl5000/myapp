@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
     <title><%= @title %></title>
@@ -8,16 +8,105 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="/stylesheets/default.css" />   
 		<link rel="stylesheet" href="/stylesheets/component.css" />
-		<script src="js/modernizr.custom.js"></script>
-		
+    <link rel="stylesheet" href="/stylesheets/hexaflip.css" />
+		<link rel="stylesheet" href="/stylesheets/demo.css" />
+    <script src="javascripts/modernizr.custom.js"></script>
   </head>
   <body>
     <header role="banner">
-      <h1><a href="/"><%= image "serve-logo" %></a></h1>
+      <h1><a href="/welcome"><%= image "serve-logo" %></a></h1>
       <div class="action-link"><a href="http://get-serve.com/documentation">Documentation</a></div>
     </header>
+    
+    
+    <div class="container">	
+			<!-- Codrops top bar -->                                                                       
+
+			<header>
+				<h1>Responsive Retina-Friendly Menu <span>with different, size-dependent layouts</span></h1>	
+			</header>
+			
+			<div class="main clearfix">
+				<nav id="menu" class="nav">					
+					<ul>
+						<li>
+							<a href="#">
+								<span class="icon">
+									<i aria-hidden="true" class="icon-home"></i>
+								</span>
+								<span>Home</span>
+							</a>
+						</li>
+						<li>
+							<a href="/services">    
+								<span class="icon"> 
+									<i aria-hidden="true" class="icon-services"></i>
+								</span>
+								<span>Services</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="icon">
+									<i aria-hidden="true" class="icon-portfolio"></i>
+								</span>
+								<span>Portfolio</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="icon">
+									<i aria-hidden="true" class="icon-blog"></i>
+								</span>
+								<span>Blog</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="icon">
+									<i aria-hidden="true" class="icon-team"></i>
+								</span>
+								<span>The team</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="icon">
+									<i aria-hidden="true" class="icon-contact"></i>
+								</span>
+								<span>Contact</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div><!-- /container -->
+		<script>
+			//  The function to change the class
+			var changeClass = function (r,className1,className2) {
+				var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+				if( regex.test(r.className) ) {
+					r.className = r.className.replace(regex,' '+className2+' ');
+			    }
+			    else{
+					r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+			    }
+			    return r.className;
+			};	
+
+			//  Creating our button in JS for smaller screens
+			var menuElements = document.getElementById('menu');
+			menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+
+			//  Toggle the class on click to show / hide the menu
+			document.getElementById('menutoggle').onclick = function() {
+				changeClass(this, 'navtoogle active', 'navtoogle');
+			}
+		</script>
+    
+    
     <section role="main">
       <article>
         <header><h1><%= @title %></h1></header>
